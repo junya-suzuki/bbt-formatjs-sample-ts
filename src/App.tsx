@@ -1,25 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import { IntlProvider } from "react-intl";
+import Home from "./components/Home";
 
-function App() {
+type Props = {
+  locale: string,
+  messages: any
+}
+
+const App: React.FC<Props> = (props) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <IntlProvider
+      locale={props.locale}
+      defaultLocale="en"
+      messages={props.messages}>
+      <Home name="Suzuki" />
+    </IntlProvider>
   );
 }
 
